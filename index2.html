@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>学生分配计算器</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="container" style="max-width:800px">
+		<h2 class="text-color text-bold">Exponential Idle 学生分配计算器</h2>
+		<h3 class="text-color-light text-bold">
+			原作者 <a href="https://github.com/Niedzielan" target="_blank">Niedzielan</a>, 
+			<a href="https://github.com/SashLilac" target="_blank">Milla</a>,
+			<a href="https://github.com/AfuroZamurai" target="_blank">AfuroZamurai</a>
+		</h3>
+		<h3 class="text-color-light text-bold">
+			汉化者 <a href="https://github.com/GSUI5051" target="_blank">GSUI5051</a> 
+		</h3>
+		<noscript>
+			<h3>请先启用 JavaScript，再刷新页面。</h3>
+		</noscript>
+		<p class="text-color">
+      基于学生数量、星星数量和 f(t) 计算出最佳的学生分配。
+		</p>
+		<p class="text-color">
+			输入的这些数值，最好是同一个时刻的对应数值，或者尽可能接近同一时刻。
+		</p>
+		<p class="text-color">
+      在“输入学生数量”中输入你能分配在前 7 个研究上的学生数量。
+      在“输入 t 的值”中输入游戏画面左上角 t 的值。
+      在“输入 f(t) 的值”中输入游戏画面左上角 ee 后面的数值。如果 f(t)=ee15000, 输入的是 15000.
+			点击游戏画面右下角的齿轮图标，点击统计数据，在“输入总星数”中输入总星数的值。
+		</p>
+		<p class="text-color">
+			如果广告加成生效的话，请在“启用广告加成”下面的复选框中打勾。
+			<b><i>只有</i></b> 在你按住加速按钮时，在“启用加速倍率”下面的复选框中打勾。
+			否则不必要这么做。如果你真的这么做，那么加速倍率的值默认为 2.85, 
+			当然你也可以自行输入加速倍率的值。
+		</p>
+
+		<input id="students" placeholder="输入学生数量"><br>
+		<input id="t" placeholder="输入 t 的值"><br>
+		<input id="ft" placeholder="输入 f(t) 的值"><br>
+		<input id="stars" placeholder="输入总星数"><br>
+		<input id="accelmult" placeholder="输入加速倍率（可选，默认为 2.85）"></br>
+
+		<div class="cb-container">
+			<div class="cb-div">
+				<label for="adbonus">启用广告加成</label>
+				<input type="checkbox" id="adbonus">
+			</div>
+			<div class="cb-div">
+				<label for="acceleration">启用加速倍率</label>
+				<input type="checkbox" id="acceleration">
+			</div>
+		</div>
+		
+		<div style="text-align: center;">
+			<button type="button" class="button" onclick="optimize()">计算</button>
+		</div>
+		<p id="output" class="output"></p>
+		<script src="script2.js"></script>
+	</div>
+</body>
+
+</html>
