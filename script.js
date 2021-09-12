@@ -13,6 +13,13 @@ function optimize() {
 	var TheoryBoost = document.getElementById("theoryBoost").checked
     var acceleration = document.getElementById("acceleration").checked
     var accelerationBonus = parseFloat(document.getElementById("accelmult").value)
+	
+	if(ignoreTheories && TheoryBoost){
+		errorMessage += "You can't perform Theory Boost without any theory. Please unlock Chaos Theory with your students."
+	}
+	else if(students < 55 && TheoryBoost){
+		errorMessage += "You can't unlock Theory Boost with " + students + " students. You have to unlock Chaos Theory first."
+	}
     
     if(isNaN(accelerationBonus))
         accelerationBonus = 2.8538;

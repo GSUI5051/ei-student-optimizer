@@ -13,6 +13,13 @@ function optimize() {
 	var TheoryBoost = document.getElementById("theoryBoost").checked
     var acceleration = document.getElementById("acceleration").checked
     var accelerationBonus = parseFloat(document.getElementById("accelmult").value)
+	
+	if(ignoreTheories && TheoryBoost){
+		errorMessage += "未解锁理论，无法启用理论加成（研究 9）。请先解锁混沌理论。"
+	}
+	else if(students <= 55 && TheoryBoost){
+		errorMessage += "无法在" + students + " 个学生时解锁理论加成（研究 9）。请先解锁混沌理论。"
+	}
     
     if(isNaN(accelerationBonus))
         accelerationBonus = 2.8538;
