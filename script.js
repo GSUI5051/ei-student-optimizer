@@ -9,6 +9,8 @@ function optimize() {
     var stars = parseFloat(document.getElementById("stars").value)
 
     var adBonus = document.getElementById("adbonus").checked
+	var ignoreTheories = document.getElementById("ignoretheories").checked
+	var TheoryBoost = document.getElementById("theoryBoost").checked
     var acceleration = document.getElementById("acceleration").checked
     var accelerationBonus = parseFloat(document.getElementById("accelmult").value)
     
@@ -79,6 +81,29 @@ function optimize() {
     }
 
     var order = [0, 0, 0, 0, 0, 0, 0]
+	
+	if (!ignoreTheories) {
+    if (students >= 55) {
+        students -= 55
+    }
+    else if (students >= 20) {
+        students -= 20
+        while (students >= 5) {
+              students -= 5
+        }
+    }
+}
+	
+	if (TheoryBoost) {
+	if (students >= 30) {
+        students -= 30
+    }
+    else if (students >= 10) {
+        while (students >= 10) {
+              students -= 10
+        }
+    }
+}
 
     function getBestTotal(order, totalStudents, highest = [0,0,0,0,0,0,0]) {
         var remainingStudents = totalStudents - getCostOrder(order)
@@ -222,6 +247,6 @@ function optimize() {
         "<br>" +
         */
         errorMessage !== "" ? errorMessage : "Calculated dt: " + dt.toPrecision(3) + "<br>Phi: " + phiDigits.toPrecision(3) + "e" + Math.floor(phi) +
-        "<br>Student distribution: " + order.join(", ") + "<br>Total Students Spent: " + getCostOrder(order) + bonusText
+        "<br>Student distribution: " + order.join(", ") + "<br>Total Students Spent on Research 1~7: " + getCostOrder(order) + bonusText
     )
 }

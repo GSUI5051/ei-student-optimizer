@@ -9,6 +9,8 @@ function optimize() {
     var stars = parseFloat(document.getElementById("stars").value)
 
     var adBonus = document.getElementById("adbonus").checked
+	var ignoreTheories = document.getElementById("ignoretheories").checked
+	var TheoryBoost = document.getElementById("theoryBoost").checked
     var acceleration = document.getElementById("acceleration").checked
     var accelerationBonus = parseFloat(document.getElementById("accelmult").value)
     
@@ -79,6 +81,29 @@ function optimize() {
     }
 
     var order = [0, 0, 0, 0, 0, 0, 0]
+	
+	if (!ignoreTheories) {
+    if (students >= 55) {
+        students -= 55
+    }
+    else if (students >= 20) {
+        students -= 20
+        while (students >= 5) {
+              students -= 5
+        }
+    }
+}
+	
+	if (TheoryBoost) {
+	if (students >= 30) {
+        students -= 30
+    }
+    else if (students >= 10) {
+        while (students >= 10) {
+              students -= 10
+        }
+    }
+}
 
     function getBestTotal(order, totalStudents, highest = [0,0,0,0,0,0,0]) {
         var remainingStudents = totalStudents - getCostOrder(order)
@@ -222,6 +247,6 @@ function optimize() {
         "<br>" +
         */
         errorMessage !== "" ? errorMessage : "dt 的计算值： " + dt.toPrecision(3) + "<br>φ=" + phiDigits.toPrecision(3) + "e" + Math.floor(phi) +
-        "<br>学生分配：" + order.join(", ") + "<br>使用的学生数量：" + getCostOrder(order) + bonusText
+        "<br>学生分配：" + order.join(", ") + "<br>研究 1 至 7 使用的学生数量：" + getCostOrder(order) + bonusText
     )
 }
